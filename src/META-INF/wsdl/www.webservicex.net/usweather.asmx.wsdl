@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.webserviceX.NET" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.webserviceX.NET" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.webserviceX.NET">
+      <s:element name="GetWeatherReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWeatherReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWeatherReportResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetWeatherReportSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWeatherReport" />
+  </wsdl:message>
+  <wsdl:message name="GetWeatherReportSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWeatherReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWeatherReportHttpGetIn">
+    <wsdl:part name="ZipCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetWeatherReportHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetWeatherReportHttpPostIn">
+    <wsdl:part name="ZipCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetWeatherReportHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="USWeatherSoap">
+    <wsdl:operation name="GetWeatherReport">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get five day weather report for a given zipcode</wsdl:documentation>
+      <wsdl:input message="tns:GetWeatherReportSoapIn" />
+      <wsdl:output message="tns:GetWeatherReportSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="USWeatherHttpGet">
+    <wsdl:operation name="GetWeatherReport">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get five day weather report for a given zipcode</wsdl:documentation>
+      <wsdl:input message="tns:GetWeatherReportHttpGetIn" />
+      <wsdl:output message="tns:GetWeatherReportHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="USWeatherHttpPost">
+    <wsdl:operation name="GetWeatherReport">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get five day weather report for a given zipcode</wsdl:documentation>
+      <wsdl:input message="tns:GetWeatherReportHttpPostIn" />
+      <wsdl:output message="tns:GetWeatherReportHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="USWeatherSoap" type="tns:USWeatherSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetWeatherReport">
+      <soap:operation soapAction="http://www.webserviceX.NET/GetWeatherReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="USWeatherSoap12" type="tns:USWeatherSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetWeatherReport">
+      <soap12:operation soapAction="http://www.webserviceX.NET/GetWeatherReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="USWeatherHttpGet" type="tns:USWeatherHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetWeatherReport">
+      <http:operation location="/GetWeatherReport" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="USWeatherHttpPost" type="tns:USWeatherHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetWeatherReport">
+      <http:operation location="/GetWeatherReport" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="USWeather">
+    <wsdl:port name="USWeatherSoap" binding="tns:USWeatherSoap">
+      <soap:address location="http://www.webservicex.net/usweather.asmx" />
+    </wsdl:port>
+    <wsdl:port name="USWeatherSoap12" binding="tns:USWeatherSoap12">
+      <soap12:address location="http://www.webservicex.net/usweather.asmx" />
+    </wsdl:port>
+    <wsdl:port name="USWeatherHttpGet" binding="tns:USWeatherHttpGet">
+      <http:address location="http://www.webservicex.net/usweather.asmx" />
+    </wsdl:port>
+    <wsdl:port name="USWeatherHttpPost" binding="tns:USWeatherHttpPost">
+      <http:address location="http://www.webservicex.net/usweather.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

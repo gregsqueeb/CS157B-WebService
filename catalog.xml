@@ -2,4 +2,5 @@
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
     <system systemId="http://www.webservicex.net/uszip.asmx?WSDL" uri="xml-resources/web-service-references/uszip/wsdl/www.webservicex.net/uszip.asmx.wsdl"/>
     <system systemId="http://webservices.amazon.com/AWSECommerceService/AWSECommerceService.wsdl" uri="xml-resources/web-service-references/AWSECommerceService/wsdl/webservices.amazon.com/AWSECommerceService/AWSECommerceService.wsdl"/>
+    <system systemId="http://www.webservicex.net/usweather.asmx?WSDL" uri="xml-resources/web-service-references/usweather/wsdl/www.webservicex.net/usweather.asmx.wsdl"/>
 </catalog>

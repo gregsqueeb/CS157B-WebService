@@ -52,5 +52,22 @@
         <delete dir="${build.generated.dir}/jax-wsCache/AWSECommerceService"/>
         <delete dir="${build.generated.sources.dir}/jax-ws/com/amazon/webservices/awsecommerceservice/2011-08-01"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-uszip, wsimport-client-AWSECommerceService"/>
+    <target name="wsimport-client-usweather" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/usweather"/>
+        <property name="wsdl-usweather" location="xml-resources/web-service-references/usweather/wsdl/www.webservicex.net/usweather.asmx.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/usweather" destdir="${build.generated.dir}/jax-wsCache/usweather" wsdl="${wsdl-usweather}" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://www.webservicex.net/usweather.asmx?WSDL" xendorsed="true">
+            <depends file="${wsdl-usweather}"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/usweather"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/usweather">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-usweather" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/usweather"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/net/webservicex"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-uszip, wsimport-client-AWSECommerceService, wsimport-client-usweather"/>
 </project>

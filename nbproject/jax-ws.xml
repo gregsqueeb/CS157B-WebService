@@ -50,5 +50,29 @@
         </wsimport-option>
       </wsimport-options>
     </client>
+    <client name="usweather">
+      <wsdl-url>http://www.webservicex.net/usweather.asmx?WSDL</wsdl-url>
+      <local-wsdl-file>www.webservicex.net/usweather.asmx.wsdl</local-wsdl-file>
+      <package-name>net.webservicex</package-name>
+      <catalog-file>catalog.xml</catalog-file>
+      <wsimport-options>
+        <wsimport-option>
+          <wsimport-option-name>extension</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>verbose</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>wsdlLocation</wsimport-option-name>
+          <wsimport-option-value>http://www.webservicex.net/usweather.asmx?WSDL</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xendorsed</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+      </wsimport-options>
+    </client>
   </clients>
 </jax-ws>
