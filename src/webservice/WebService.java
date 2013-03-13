@@ -4,6 +4,7 @@
  */
 package webservice;
 import java.io.BufferedReader;
+import java.util.Random;
 import java.io.InputStreamReader;
 import com.cdyne.ws.weatherws.WeatherReturn;
 
@@ -84,7 +85,14 @@ public class WebService {
                     System.out.println("  State:       " + wr.getState());
                     System.out.println("  Description: " + wr.getDescription());
                     System.out.println("  Temperature: " + wr.getTemperature());
-                    System.out.println(getWhoIS(wr.getDescription().replace(" ", "") + ".com"));
+
+                    if("".equals(wr.getDescription())){
+                        System.out.println(getWhoIS("noWeather.com"));
+                        
+                    }
+                    else{
+                        System.out.println(getWhoIS(wr.getDescription().replaceAll(" ","") + ".com"));
+                    }
                 }
                 else{
                     System.out.println("Enter a zip code");
@@ -102,6 +110,25 @@ public class WebService {
                 else{
                     System.out.println("Enter a zip code");
                 }
+            }
+            else if (parts[0].equalsIgnoreCase("random")){
+                Random rand = new Random();
+                int value = rand.nextInt(99999); 
+                System.out.println(value);
+                wr = getCityWeatherByZIP(Integer.toString(value));
+                    System.out.println("  City:        " + wr.getCity());
+                    System.out.println("  State:       " + wr.getState());
+                    System.out.println("  Description: " + wr.getDescription());
+                    System.out.println("  Temperature: " + wr.getTemperature());
+                    if("".equals(wr.getDescription())){
+                        System.out.println(getWhoIS("noWeather.com"));
+                        
+                    }
+                    else{
+                        System.out.println(getWhoIS(wr.getDescription().replaceAll(" ","") + ".com"));
+                    }
+                
+                
             }
             else if (!command.equalsIgnoreCase("help")) {
                 System.out.println(HELP_MESSAGE);
