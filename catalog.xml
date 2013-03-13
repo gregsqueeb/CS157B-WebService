@@ -3,4 +3,9 @@
     <system systemId="http://www.webservicex.net/uszip.asmx?WSDL" uri="xml-resources/web-service-references/uszip/wsdl/www.webservicex.net/uszip.asmx.wsdl"/>
     <system systemId="http://webservices.amazon.com/AWSECommerceService/AWSECommerceService.wsdl" uri="xml-resources/web-service-references/AWSECommerceService/wsdl/webservices.amazon.com/AWSECommerceService/AWSECommerceService.wsdl"/>
     <system systemId="http://www.webservicex.net/usweather.asmx?WSDL" uri="xml-resources/web-service-references/usweather/wsdl/www.webservicex.net/usweather.asmx.wsdl"/>
+    <system systemId="http://wsf.cdyne.com/WeatherWS/Weather.asmx?WSDL" uri="xml-resources/web-service-references/Weather/wsdl/wsf.cdyne.com/WeatherWS/Weather.asmx.wsdl"/>
+    <system systemId="http://www.webservicex.net/isbn.asmx?WSDL" uri="xml-resources/web-service-references/isbn/wsdl/www.webservicex.net/isbn.asmx.wsdl"/>
+    <system systemId="http://www.webservicex.net/TranslateService.asmx?WSDL" uri="xml-resources/web-service-references/TranslateService/wsdl/www.webservicex.net/TranslateService.asmx.wsdl"/>
+    <system systemId="http://www.webservicex.net/medicareSupplier.asmx?WSDL" uri="xml-resources/web-service-references/medicareSupplier/wsdl/www.webservicex.net/medicareSupplier.asmx.wsdl"/>
+    <system systemId="http://www.webservicex.net/whois.asmx?WSDL" uri="xml-resources/web-service-references/whois/wsdl/www.webservicex.net/whois.asmx.wsdl"/>
 </catalog>

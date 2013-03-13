@@ -69,5 +69,90 @@
         <delete dir="${build.generated.dir}/jax-wsCache/usweather"/>
         <delete dir="${build.generated.sources.dir}/jax-ws/net/webservicex"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-uszip, wsimport-client-AWSECommerceService, wsimport-client-usweather"/>
+    <target name="wsimport-client-Weather" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/Weather"/>
+        <property name="wsdl-Weather" location="xml-resources/web-service-references/Weather/wsdl/wsf.cdyne.com/WeatherWS/Weather.asmx.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Weather" destdir="${build.generated.dir}/jax-wsCache/Weather" wsdl="${wsdl-Weather}" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://wsf.cdyne.com/WeatherWS/Weather.asmx?WSDL" xendorsed="true">
+            <depends file="${wsdl-Weather}"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/Weather"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/Weather">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-Weather" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/Weather"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/cdyne/ws/weatherws"/>
+    </target>
+    <target name="wsimport-client-isbn" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/isbn"/>
+        <property name="wsdl-isbn" location="xml-resources/web-service-references/isbn/wsdl/www.webservicex.net/isbn.asmx.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/isbn" destdir="${build.generated.dir}/jax-wsCache/isbn" wsdl="${wsdl-isbn}" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://www.webservicex.net/isbn.asmx?WSDL" xendorsed="true">
+            <depends file="${wsdl-isbn}"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/isbn"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/isbn">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-isbn" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/isbn"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/net/webservicex"/>
+    </target>
+    <target name="wsimport-client-TranslateService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/TranslateService"/>
+        <property name="wsdl-TranslateService" location="xml-resources/web-service-references/TranslateService/wsdl/www.webservicex.net/TranslateService.asmx.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/TranslateService" destdir="${build.generated.dir}/jax-wsCache/TranslateService" wsdl="${wsdl-TranslateService}" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://www.webservicex.net/TranslateService.asmx?WSDL" xendorsed="true">
+            <depends file="${wsdl-TranslateService}"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/TranslateService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/TranslateService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-TranslateService" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/TranslateService"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/net/webservicex"/>
+    </target>
+    <target name="wsimport-client-medicareSupplier" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/medicareSupplier"/>
+        <property name="wsdl-medicareSupplier" location="xml-resources/web-service-references/medicareSupplier/wsdl/www.webservicex.net/medicareSupplier.asmx.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/medicareSupplier" destdir="${build.generated.dir}/jax-wsCache/medicareSupplier" wsdl="${wsdl-medicareSupplier}" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://www.webservicex.net/medicareSupplier.asmx?WSDL" xendorsed="true">
+            <depends file="${wsdl-medicareSupplier}"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/medicareSupplier"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/medicareSupplier">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-medicareSupplier" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/medicareSupplier"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/net/webservicex"/>
+    </target>
+    <target name="wsimport-client-whois" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/whois"/>
+        <property name="wsdl-whois" location="xml-resources/web-service-references/whois/wsdl/www.webservicex.net/whois.asmx.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/whois" destdir="${build.generated.dir}/jax-wsCache/whois" wsdl="${wsdl-whois}" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://www.webservicex.net/whois.asmx?WSDL" xendorsed="true">
+            <depends file="${wsdl-whois}"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/whois"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/whois">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-whois" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/whois"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/net/webservicex"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-uszip, wsimport-client-AWSECommerceService, wsimport-client-usweather, wsimport-client-Weather, wsimport-client-isbn, wsimport-client-TranslateService, wsimport-client-medicareSupplier, wsimport-client-whois"/>
 </project>
