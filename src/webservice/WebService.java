@@ -30,15 +30,6 @@ public class WebService {
         String command;
         WeatherReturn wr;
         
-        String zipCode = "95192";
-        System.out.printf("\nCity weather for ZIP code %s\n", zipCode);
-        wr = getCityWeatherByZIP(zipCode);
-        System.out.println("  City:        " + wr.getCity());
-        System.out.println("  State:       " + wr.getState());
-        System.out.println("  Description: " + wr.getDescription());
-        System.out.println("  Temperature: " + wr.getTemperature());
-        
-        System.out.println(getWhoIS("sunny.com"));
         
         do {
             System.out.print("\nCommand? ");
