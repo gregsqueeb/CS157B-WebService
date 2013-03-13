@@ -42,7 +42,7 @@ public class WebService {
             }
             
             String parts[] = command.split(" ");
-            System.out.println(parts.length);
+            
             if (parts[0].equalsIgnoreCase("domain") && parts.length < 3) {
                 if(parts.length > 1){
                     System.out.println(getWhoIS(parts[1]));
