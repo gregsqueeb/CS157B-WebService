@@ -3,7 +3,8 @@
  * and open the template in the editor.
  */
 package webservice;
-
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import com.cdyne.ws.weatherws.WeatherReturn;
 
 /**
@@ -18,15 +19,105 @@ public class WebService {
     public static void main(String[] args) {
         // TODO code application logic here
         
+        BufferedReader stdin = 
+                new BufferedReader(new InputStreamReader(System.in));
+        String HELP_MESSAGE =
+        "*** Commands: "
+            + "\n\t create, load, "
+            + "\n\t find_user <n>, find_forum <n>, find_thread <n>, find_post <n>  "
+            + "\n\t users, forums, forum_posts, threads, quit "
+            + "\n***";
+        String command;
+        WeatherReturn wr;
+        
         String zipCode = "95192";
         System.out.printf("\nCity weather for ZIP code %s\n", zipCode);
-        WeatherReturn wr = getCityWeatherByZIP(zipCode);
+        wr = getCityWeatherByZIP(zipCode);
         System.out.println("  City:        " + wr.getCity());
         System.out.println("  State:       " + wr.getState());
         System.out.println("  Description: " + wr.getDescription());
         System.out.println("  Temperature: " + wr.getTemperature());
         
         System.out.println(getWhoIS("sunny.com"));
+        
+        do {
+            System.out.print("\nCommand? ");
+            
+            try {
+                command = stdin.readLine();
+            }
+            catch (java.io.IOException ex) {
+                command = "?";
+            }
+            
+            String parts[] = command.split(" ");
+            System.out.println(parts.length);
+            if (parts[0].equalsIgnoreCase("domain") && parts.length < 3) {
+                if(parts.length > 1){
+                    System.out.println(getWhoIS(parts[1]));
+                }
+                else{
+                    System.out.println("Enter a domain");
+                }
+            }
+            else if (parts[0].equalsIgnoreCase("domain") && parts.length > 2 &&
+                    parts[2].equalsIgnoreCase("zip")){
+                if(parts.length < 4){
+                    System.out.println("Enter a zip code");
+                }
+                else{
+                    System.out.println(getWhoIS(parts[1]));
+                    wr = getCityWeatherByZIP(parts[3]);
+                    System.out.println("  City:        " + wr.getCity());
+                    System.out.println("  State:       " + wr.getState());
+                    System.out.println("  Description: " + wr.getDescription());
+                    System.out.println("  Temperature: " + wr.getTemperature());
+                }
+            }
+            else if (parts[0].equalsIgnoreCase("zip") && parts.length < 3) {
+                if(parts.length > 1){
+                    wr = getCityWeatherByZIP(parts[1]);
+                    System.out.println("  City:        " + wr.getCity());
+                    System.out.println("  State:       " + wr.getState());
+                    System.out.println("  Description: " + wr.getDescription());
+                    System.out.println("  Temperature: " + wr.getTemperature());
+                }
+                else{
+                    System.out.println("Enter a zip code");
+                }
+            }
+            else if (parts[0].equalsIgnoreCase("zipWeatherDomain") && parts.length < 3) {
+                if(parts.length > 1){
+                    wr = getCityWeatherByZIP(parts[1]);
+                    System.out.println("  City:        " + wr.getCity());
+                    System.out.println("  State:       " + wr.getState());
+                    System.out.println("  Description: " + wr.getDescription());
+                    System.out.println("  Temperature: " + wr.getTemperature());
+                    System.out.println(getWhoIS(wr.getDescription().replace(" ", "") + ".com"));
+                }
+                else{
+                    System.out.println("Enter a zip code");
+                }
+            }
+            else if (parts[0].equalsIgnoreCase("zipDomain") && parts.length < 3) {
+                if(parts.length > 1){
+                    wr = getCityWeatherByZIP(parts[1]);
+                    System.out.println("  City:        " + wr.getCity());
+                    System.out.println("  State:       " + wr.getState());
+                    System.out.println("  Description: " + wr.getDescription());
+                    System.out.println("  Temperature: " + wr.getTemperature());
+                    System.out.println(getWhoIS(parts[1] + ".com"));
+                }
+                else{
+                    System.out.println("Enter a zip code");
+                }
+            }
+            else if (!command.equalsIgnoreCase("help")) {
+                System.out.println(HELP_MESSAGE);
+            }
+        } while (!command.equalsIgnoreCase("quit"));
+        
+        
 
     }
 
